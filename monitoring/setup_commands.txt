@@ -1,0 +1,9 @@
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install promethius prometheus-community/kube-prometheus-stack -n monitoring --create-namesapce
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+helm install --values monitoring/loki/values.yaml loki grafana/loki -n monitoring
+helm repo add grafana https://grafana.github.io/helm-charts
+helm repo update
+helm upgrade --install promtail grafana/promtail -f values.yaml -n monitoring
