@@ -1,0 +1,19 @@
+- name: playbook
+  hosts: myhosts
+  remote_user: azure
+  become: true
+  tasks:
+  - name: Copy file
+    copy:
+      src: ~/ansible/default
+      dest: /etc/nginx/sites-enabled/default
+  - name: nginx -t
+    shell: nginx -t
+    notify:
+    - Restart service nginx
+  
+  handlers:
+    - name: Restart service nginx
+      service:
+        name: nginx
+        state: restarted

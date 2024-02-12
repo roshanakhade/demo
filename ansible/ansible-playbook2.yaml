@@ -1,0 +1,9 @@
+- name: playbook
+  hosts: myhosts
+  remote_user: azure
+  tasks:
+  - name: Install nginx
+    ansible.builtin.package:
+      name: nginx
+      state: present
+    become: true

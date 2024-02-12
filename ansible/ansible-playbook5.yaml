@@ -1,0 +1,22 @@
+- name: playbook
+  hosts: myhosts
+  remote_user: azure
+  become: true
+  tasks:
+  - name: block demo
+  block:
+    - name: Copy file
+      copy:
+        src: ~/ansible/default
+        dest: /etc/nginx/sites-enabled/default
+    - name: nginx -t
+      shell: nginx -t
+      notify:
+      - Restart service nginx
+  when: ansible_facts['distribution'] == 'Ubuntu'
+  
+  handlers:
+    - name: Restart service nginx
+      service:
+        name: nginx
+        state: restarted

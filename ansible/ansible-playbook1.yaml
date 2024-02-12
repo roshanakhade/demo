@@ -1,0 +1,8 @@
+- name: playbook
+  hosts: myhosts
+  remote_user: azure
+  tasks:
+  - name: Copy file
+    copy:
+      src: ~/default.conf
+      dest: ~/default.conf

@@ -1,0 +1,10 @@
+- name: my first playbook
+  hosts: myhosts
+  remote_user: azure
+  tasks:
+    - name: Ping my hosts
+      ansible.builtin.ping:
+
+    - name: Print message
+      ansible.builtin.debug:
+        msg: Hello world
