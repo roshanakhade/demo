@@ -1,0 +1,18 @@
+---
+# tasks file for webserver
+- name: Ping my hosts
+  ansible.builtin.ping:
+
+- name: Print message
+  ansible.builtin.debug:
+    msg: Hello world
+
+- name: Copy file
+  copy:
+    src: ~/default.conf
+    dest: ~/default.conf
+
+- name: Install nginx
+  ansible.builtin.package:
+    name: nginx
+    state: present

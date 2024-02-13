@@ -1,0 +1,5 @@
+- name: playbook
+  hosts: myhosts
+  remote_user: azure
+  tasks:
+  - include_tasks: tasks0.yaml

@@ -1,0 +1,13 @@
+- name: my first playbook
+  hosts: myhosts
+  remote_user: azure
+  tasks:
+    - name: Print cities
+      ansible.builtin.debug:
+        msg: Hello {{ item }}
+      loop:
+        - Pune
+        - Mumbai
+        - Sambhajinagar
+        - Nagpur
+        - Gaziabad
